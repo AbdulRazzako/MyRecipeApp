@@ -8,6 +8,7 @@ It fetches recipe categories from [TheMealDB API](https://www.themealdb.com/) to
 ## 🚀 Features
 
 - 🧑‍🍳 Browse recipe categories from TheMealDB
+- 📄 View category details on a separate screen
 - 🔄 API integration using **Retrofit**
 - 🧼 Clean MVVM architecture
 - 📱 Modern UI with **Jetpack Compose**
@@ -26,12 +27,19 @@ It fetches recipe categories from [TheMealDB API](https://www.themealdb.com/) to
 | Image Loading | Coil                                     |
 | Language      | Kotlin                                   |
 | State         | Compose State APIs                       |
+| Navigation    | Jetpack Navigation-Compose               |
 
 ---
 
-## 📦 Setup & Run
+## 🧭 Navigation
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/MyRecipeApp.git
-cd MyRecipeApp
+The app uses **Jetpack Navigation Compose** to manage screen transitions.
+
+- 🏠 `RecipeScreen`: Lists all categories retrieved from the API.
+- 📄 `DetailScreen`: Displays more info about a selected category.
+
+Data is passed between screens using `NavController` and `savedStateHandle`:
+
+```kotlin
+navController.currentBackStackEntry?.savedStateHandle?.set("cat", selectedCategory)
+navController.navigate(Screen.DetailScreen.route)
