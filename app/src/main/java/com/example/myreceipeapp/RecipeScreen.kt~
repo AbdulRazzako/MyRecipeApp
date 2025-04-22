@@ -41,15 +41,15 @@ fun RecipeScreen(modifier: Modifier = Modifier,
             }
 
             else -> {
-                CategoryScreen(categories = viewstate.list,navigateToDetail, modifier = modifier)
+                CategoryScreen(categories = viewstate.list,navigateToDetail)
             }
         }
     }
 }
 
 @Composable
-fun CategoryScreen(categories: List<Category>,navigateToDetail: (Category) -> Unit, modifier: Modifier = Modifier) {
-    LazyVerticalGrid(GridCells.Fixed(2), modifier = modifier.fillMaxSize()) {
+fun CategoryScreen(categories: List<Category>,navigateToDetail: (Category) -> Unit) {
+    LazyVerticalGrid(GridCells.Fixed(2), modifier = Modifier.fillMaxSize()) {
         items(categories) { category ->
             CategoryItem(category = category,navigateToDetail)
         }
